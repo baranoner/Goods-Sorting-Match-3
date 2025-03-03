@@ -29,7 +29,8 @@ public class Shelf : MonoBehaviour
                     bool isEnabled = items[i].enabled;
                     _itemScales = items[i].transform.localScale;
 
-                    Destroy(items[i].gameObject);
+                    items[i].gameObject.transform.SetParent(disabledItemsSection.transform);
+                    items[i].gameObject.SetActive(false);
                     GameObject newItem = Instantiate(items[i].StartingPrefab, position, Quaternion.identity);
                     newItem.transform.SetParent(section);
                     newItem.transform.localScale = _itemScales;
